@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { fadeUp, staggerChildren } from "../utils/motionVariants"
 import { FiGithub, FiLinkedin, FiMail, FiDownload } from "react-icons/fi"
+import Profile from '../assets/Profile.jpeg'
 
 const roles = ["MERN Stack Developer", "Full-Stack Engineer", "UI Enthusiast"]
 
@@ -61,7 +62,7 @@ export default function Hero() {
                 <motion.div variants={fadeUp} className="relative flex justify-center mb-6">
                     <div className="absolute inset-0 blur-2xl bg-gradient-to-r from-blue-500/30 to-cyan-400/30 rounded-full scale-110 -z-10 animate-pulse" />
                     <motion.img
-                        src="/src/assets/Profile.jpeg"
+                        src={Profile}
                         alt="Rohit Bansode"
                         className="w-40 h-40 md:w-48 md:h-48 rounded-full shadow-xl border-4 border-blue-600 dark:border-cyan-400 object-cover"
                         whileHover={{ scale: 1.06, rotate: 1 }}
