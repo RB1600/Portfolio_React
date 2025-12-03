@@ -1,9 +1,9 @@
 export const experience = [
     {
         id: 1,
-        role: "React Developer - Intern",
+        role: "React Developer Intern",
         company: "Baranwal Consultancy & Services",
-        period: "Sept 2025 – Nov 2025",
+        period: "Sept 2025 – Present",
         location: "Pimpri, Pune",
         responsibilities: [
             "Developed MERN-based admin dashboards and protected data flow modules.",
