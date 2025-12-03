@@ -1,10 +1,8 @@
-// src/components/ProjectCard.jsx
 import React from "react"
 import { motion } from "framer-motion"
-import { Link } from "react-router-dom"
 
 export default function ProjectCard({
-    id,
+   
     title,
     description,
     tags,
@@ -15,7 +13,6 @@ export default function ProjectCard({
             whileHover={{ scale: 1.02, y: -5 }}
             transition={{ type: "spring", stiffness: 250, damping: 20 }}
             className="group relative flex flex-col overflow-hidden rounded-2xl bg-white/80 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-xl transition-all duration-500 backdrop-blur-sm w-full h-full"
-
         >
             {/* Image */}
             {image && (
@@ -23,7 +20,7 @@ export default function ProjectCard({
                     <img
                         src={image}
                         alt={title}
-                        className="object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-110"
+                        className="object-cover w-full  transition-transform duration-700 ease-out group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
@@ -52,14 +49,13 @@ export default function ProjectCard({
                     </div>
                 </div>
 
-                {/* ✅ View Details Button */}
+                {/* ✅ View Details Button - Changed from Link to Div */}
                 <div className="mt-6">
-                    <Link
-                        to={`/projects/${id}`}
-                        className="inline-block w-full text-center px-5 py-2.5 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-700 dark:bg-cyan-500 dark:hover:bg-cyan-600 transition-all duration-300 shadow hover:shadow-lg"
+                    <div
+                        className="inline-block w-full text-center px-5 py-2.5 rounded-full bg-blue-600 text-white font-semibold group-hover:bg-blue-700 dark:bg-cyan-500 dark:group-hover:bg-cyan-600 transition-all duration-300 shadow hover:shadow-lg"
                     >
                         View Details
-                    </Link>
+                    </div>
                 </div>
             </div>
 

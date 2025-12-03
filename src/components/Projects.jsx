@@ -1,13 +1,18 @@
-// src/components/Projects.jsx
 import React from "react"
 import { motion } from "framer-motion"
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom" 
 import { projects } from "../data/projects"
 import { fadeUp, staggerChildren } from "../utils/motionVariants"
 import ProjectCard from "./ProjectCard"
 import SectionHeader from "./SectionHeader"
 
 export default function Projects() {
+    const navigate = useNavigate(); 
+
+    const handleCardClick = (id) => {
+        navigate(`/projects/${id}`); 
+    }
+
     return (
         <section
             id="projects"
@@ -41,11 +46,11 @@ export default function Projects() {
                                 key={p.id}
                                 variants={fadeUp}
                                 transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                                onClick={() => handleCardClick(p.id)}
+                                className="cursor-pointer h-full" 
                             >
-                                {/* ✅ Card links to /projects/:id */}
-                                <Link to={`/projects/${p.id}`}>
-                                    <ProjectCard {...p} />
-                                </Link>
+                                {/* ✅ Link tag Removed entirely */}
+                                <ProjectCard {...p} />
                             </motion.div>
                         ))}
                     </motion.div>

@@ -61,12 +61,14 @@ export default function Navbar() {
                     <a href="#skills" onClick={(e) => handleNavClick(e, "#skills")} className="hover:text-blue-600 dark:hover:text-cyan-400">
                         Skills
                     </a>
+                     <a href="#experience" onClick={(e) => handleNavClick(e, "#experience")} className="hover:text-blue-600 dark:hover:text-cyan-400">
+                        Experience
+                    </a>
+
                     <a href="#projects" onClick={(e) => handleNavClick(e, "#projects")} className="hover:text-blue-600 dark:hover:text-cyan-400">
                         Projects
                     </a>
-                    <a href="#experience" onClick={(e) => handleNavClick(e, "#experience")} className="hover:text-blue-600 dark:hover:text-cyan-400">
-                        Experience
-                    </a>
+                   
                     <a href="#contact" onClick={(e) => handleNavClick(e, "#contact")} className="hover:text-blue-600 dark:hover:text-cyan-400">
                         Contact
                     </a>
@@ -100,12 +102,15 @@ export default function Navbar() {
                     <a href="#skills" onClick={(e) => handleNavClick(e, "#skills")} className="py-2 hover:text-blue-600 dark:hover:text-cyan-400">
                         Skills
                     </a>
-                    <a href="#projects" onClick={(e) => handleNavClick(e, "#projects")} className="py-2 hover:text-blue-600 dark:hover:text-cyan-400">
-                        Projects
-                    </a>
+                  
                     <a href="#experience" onClick={(e) => handleNavClick(e, "#experience")} className="py-2 hover:text-blue-600 dark:hover:text-cyan-400">
                         Experience
                     </a>
+
+                    <a href="#projects" onClick={(e) => handleNavClick(e, "#projects")} className="py-2 hover:text-blue-600 dark:hover:text-cyan-400">
+                        Projects
+                    </a>
+                   
                     <a href="#contact" onClick={(e) => handleNavClick(e, "#contact")} className="py-2 hover:text-blue-600 dark:hover:text-cyan-400">
                         Contact
                     </a>
