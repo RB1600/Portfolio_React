@@ -1,5 +1,5 @@
 
-import agroImg from '../assets/projects/agro.png';
+import agroImg from '../assets/projects/Agro.png';
 import settribeImg from '../assets/projects/Settribe.png'; 
 import jmImg from '../assets/projects/JM.png';
 import portfolioImg from '../assets/projects/Portfolio.png';
