@@ -3,6 +3,7 @@ import agroImg from '../assets/projects/Agro.png';
 import settribeImg from '../assets/projects/Settribe.png'; 
 import jmImg from '../assets/projects/JM.png';
 import portfolioImg from '../assets/projects/Portfolio.png';
+import chaloKhelne from '../assets/projects/chaloKhelne.png';
 
 export const projects = [
     {
@@ -27,6 +28,26 @@ export const projects = [
     },
     {
         id: 3,
+        title: "Chalo Khelne - Sports Advertisement.",
+        description:
+"A targeted advertising portal allowing local businesses and sports brands to run campaigns on the Chalo Khelne platform. Includes a self-service dashboard for managing banner ads, sponsoring local tournaments, and tracking real-time engagement analytics.",        tags: [ "React", "Tailwind CSS", "Node.js", "UI/UX Design"],
+        githubLink: "https://github.com/RB1600/chalo_Khelne_Figma_website",
+        liveDemoLink: "https://cholokhelne.netlify.app/",
+        image: chaloKhelne,
+    },
+   
+    {
+        id: 4,
+        title: "Portfolio Website",
+        description:
+            "A personal portfolio built with React, Tailwind CSS, and Framer Motion.",
+        tags: ["Frontend", "React", "Tailwind CSS", "Framer Motion"],
+        githubLink: "https://github.com/RB1600/Portfolio_React",
+        liveDemoLink: "https://portfoliomir.netlify.app/",
+        image: portfolioImg,
+    },
+     {
+        id: 5,
         title: "JM Tour and Travels",
         description:
             "A modern travel booking and management web app featuring dynamic tour listings.",
@@ -35,14 +56,5 @@ export const projects = [
         liveDemoLink: "https://jm-tour-travels.vercel.app",
         image: jmImg,
     },
-    {
-        id: 4,
-        title: "Portfolio Website",
-        description:
-            "A personal portfolio built with React, Tailwind CSS, and Framer Motion.",
-        tags: ["Frontend", "React", "Tailwind CSS", "Framer Motion"],
-        githubLink: "https://github.com/your-username/portfolio",
-        liveDemoLink: "https://your-portfolio.vercel.app",
-        image: portfolioImg,
-    },
+      
 ];
