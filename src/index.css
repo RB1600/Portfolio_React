@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: oklch(57% 0.22 260);
+  --color-accent: oklch(68% 0.22 190);
+  --color-bg: oklch(98% 0 0);
+  --color-bg-dark: oklch(15% 0.02 260);
+}
+
+/* Smooth transitions between themes */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--color-bg);
+  color: rgb(17 24 39);
+}
+
+.dark body {
+  background-color: var(--color-bg-dark);
+  color: rgb(226 232 240);
+}
