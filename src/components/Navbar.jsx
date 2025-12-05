@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
 import clsx from "clsx"
 import { FiMoon, FiSun, FiMenu, FiX } from "react-icons/fi"
+import { AnimatePresence, motion } from "framer-motion"
 
 export default function Navbar() {
     const [dark, setDark] = useState(() => localStorage.getItem("theme") === "dark")
@@ -10,112 +11,137 @@ export default function Navbar() {
     const [scrolled, setScrolled] = useState(false)
     const location = useLocation()
 
+    // Toggle Dark Mode
     useEffect(() => {
         document.documentElement.classList.toggle("dark", dark)
         localStorage.setItem("theme", dark ? "dark" : "light")
     }, [dark])
 
+    // Detect Scroll for styling
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 30)
         window.addEventListener("scroll", onScroll)
         return () => window.removeEventListener("scroll", onScroll)
     }, [])
 
-    // Smooth scroll handler
+    // Smooth Scroll & Navigation Handler
     const handleNavClick = (e, targetId) => {
         e.preventDefault()
-        setOpen(false)
+        setOpen(false) // Close mobile menu
 
         if (location.pathname === "/") {
             const el = document.querySelector(targetId)
             if (el) {
+                const offset = 80 // Height of navbar
+                const bodyRect = document.body.getBoundingClientRect().top
+                const elementRect = el.getBoundingClientRect().top
+                const elementPosition = elementRect - bodyRect
+                const offsetPosition = elementPosition - offset
+
                 window.scrollTo({
-                    top: el.offsetTop - 80,
+                    top: offsetPosition,
                     behavior: "smooth",
                 })
             }
         } else {
-            // Navigate to home and anchor
             window.location.href = `/${targetId}`
         }
     }
 
+    const navLinks = [
+        { name: "Skills", href: "#skills" },
+        { name: "Experience", href: "#experience" },
+        { name: "Projects", href: "#projects" },
+        { name: "Contact", href: "#contact" },
+    ]
+
     return (
         <header
+            // Navbar Container: Fixed position, glass effect on scroll
             className={clsx(
-                "fixed w-full z-50 transition-all duration-300",
-                scrolled ? "backdrop-blur bg-white/70 dark:bg-slate-900/60 shadow" : "bg-transparent"
+                "fixed top-0 w-full z-50 transition-all duration-300 border-b",
+                scrolled
+                    ? "backdrop-blur-md bg-white/70 dark:bg-slate-900/80 border-slate-200 dark:border-slate-800 shadow-sm"
+                    : "bg-transparent border-transparent"
             )}
         >
-            <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-                {/* Logo */}
+            <nav className="container mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
+                {/* Brand Logo */}
                 <Link
                     to="/"
-                    className="font-bold text-2xl bg-gradient-to-r from-blue-600 to-cyan-400 bg-clip-text text-transparent"
+                    className="font-bold text-2xl bg-gradient-to-r from-blue-600 to-cyan-400 bg-clip-text text-transparent tracking-tight hover:scale-105 transition-transform"
                 >
                     &lt;Rohit /&gt;
                 </Link>
 
                 {/* Desktop Navigation */}
-                <div className="hidden md:flex items-center gap-6 text-gray-800 dark:text-gray-200 font-medium">
-                    <a href="#skills" onClick={(e) => handleNavClick(e, "#skills")} className="hover:text-blue-600 dark:hover:text-cyan-400">
-                        Skills
-                    </a>
-                     <a href="#experience" onClick={(e) => handleNavClick(e, "#experience")} className="hover:text-blue-600 dark:hover:text-cyan-400">
-                        Experience
-                    </a>
+                <div className="hidden md:flex items-center gap-8 text-gray-700 dark:text-gray-200 font-medium text-sm">
+                    {navLinks.map((link) => (
+                        <a
+                            key={link.name}
+                            href={link.href}
+                            onClick={(e) => handleNavClick(e, link.href)}
+                            className="hover:text-blue-600 dark:hover:text-cyan-400 transition-colors relative group"
+                        >
+                            {link.name}
+                            {/* Hover Underline Animation */}
+                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 dark:bg-cyan-400 transition-all duration-300 group-hover:w-full" />
+                        </a>
+                    ))}
 
-                    <a href="#projects" onClick={(e) => handleNavClick(e, "#projects")} className="hover:text-blue-600 dark:hover:text-cyan-400">
-                        Projects
-                    </a>
-                   
-                    <a href="#contact" onClick={(e) => handleNavClick(e, "#contact")} className="hover:text-blue-600 dark:hover:text-cyan-400">
-                        Contact
-                    </a>
-
-                    {/* Theme toggle */}
+                    {/* Desktop Theme Toggle */}
                     <button
-                        onClick={() => setDark((d) => !d)}
-                        className="p-2 rounded hover:bg-slate-200 dark:hover:bg-slate-800 transition"
+                        onClick={() => setDark(!dark)}
+                        aria-label="Toggle Theme"
+                        className="p-2 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition text-gray-700 dark:text-gray-200"
                     >
                         {dark ? <FiSun /> : <FiMoon />}
                     </button>
                 </div>
 
-                {/* Mobile Menu Button */}
-                <div className="md:hidden flex items-center gap-2">
+                {/* Mobile Controls (Theme + Menu) */}
+                <div className="md:hidden flex items-center gap-4">
                     <button
-                        onClick={() => setDark((d) => !d)}
-                        className="p-2 rounded hover:bg-slate-200 dark:hover:bg-slate-800"
+                        onClick={() => setDark(!dark)}
+                        aria-label="Toggle Theme"
+                        className="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-gray-700 dark:text-gray-200"
                     >
                         {dark ? <FiSun /> : <FiMoon />}
                     </button>
-                    <button onClick={() => setOpen((o) => !o)}>
-                        {open ? <FiX size={22} /> : <FiMenu size={22} />}
+                    <button
+                        onClick={() => setOpen(!open)}
+                        aria-label="Toggle Menu"
+                        className="text-gray-800 dark:text-white"
+                    >
+                        {open ? <FiX size={24} /> : <FiMenu size={24} />}
                     </button>
                 </div>
             </nav>
 
-            {/* Mobile Dropdown */}
-            {open && (
-                <div className="md:hidden flex flex-col bg-white dark:bg-slate-900 px-6 pb-4 gap-3 font-medium text-gray-800 dark:text-gray-200">
-                    <a href="#skills" onClick={(e) => handleNavClick(e, "#skills")} className="py-2 hover:text-blue-600 dark:hover:text-cyan-400">
-                        Skills
-                    </a>
-                  
-                    <a href="#experience" onClick={(e) => handleNavClick(e, "#experience")} className="py-2 hover:text-blue-600 dark:hover:text-cyan-400">
-                        Experience
-                    </a>
-
-                    <a href="#projects" onClick={(e) => handleNavClick(e, "#projects")} className="py-2 hover:text-blue-600 dark:hover:text-cyan-400">
-                        Projects
-                    </a>
-                   
-                    <a href="#contact" onClick={(e) => handleNavClick(e, "#contact")} className="py-2 hover:text-blue-600 dark:hover:text-cyan-400">
-                        Contact
-                    </a>
-                </div>
-            )}
+            {/* Mobile Dropdown Menu with Animation */}
+            <AnimatePresence>
+                {open && (
+                    <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="md:hidden bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 shadow-lg overflow-hidden"
+                    >
+                        <div className="flex flex-col p-4 gap-4 text-center font-medium text-gray-800 dark:text-gray-200">
+                            {navLinks.map((link) => (
+                                <a
+                                    key={link.name}
+                                    href={link.href}
+                                    onClick={(e) => handleNavClick(e, link.href)}
+                                    className="py-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors hover:text-blue-600 dark:hover:text-cyan-400"
+                                >
+                                    {link.name}
+                                </a>
+                            ))}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </header>
     )
 }

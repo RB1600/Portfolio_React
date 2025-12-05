@@ -10,7 +10,7 @@ export const experience = [
             "Implemented JWT authentication and secure API integration.",
             "Contributed to deployment, testing, and production bug fixes."
         ],
-        tech: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT"]
+        tech: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT", "React Native"]
     },
     {
         id: 2,
@@ -23,6 +23,6 @@ export const experience = [
             "Created reusable React components improving frontend performance.",
             "Resolved UI/UX issues and improved responsiveness."
         ],
-        tech: ["React.js", "Node.js", "MySQL", "Tailwind CSS"]
+        tech: ["PHP", "HTML", "CSS", "JavaScript", "React.js", "Node.js", "MySQL"]
     }
 ]

@@ -8,6 +8,7 @@ import { FiSend, FiMail, FiUser, FiMessageCircle } from "react-icons/fi"
 export default function Contact() {
     const [loading, setLoading] = useState(false)
 
+    // Handle form submission via EmailJS
     const sendEmail = async (e) => {
         e.preventDefault()
         setLoading(true)
@@ -38,7 +39,8 @@ export default function Contact() {
     return (
         <section
             id="contact"
-            className="relative py-28 px-6 bg-gradient-to-b from-white via-slate-50 to-white dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-hidden"
+            // Responsive Padding: Reduced vertical padding on mobile (py-20), increased on desktop (md:py-28)
+            className="relative py-20 md:py-28 px-4 md:px-6 bg-gradient-to-b from-white via-slate-50 to-white dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-hidden"
         >
             <div className="container mx-auto max-w-3xl text-center">
                 <motion.div
@@ -49,13 +51,14 @@ export default function Contact() {
                 >
                     <motion.h2
                         variants={fadeUp}
-                        className="text-4xl font-extrabold bg-gradient-to-r from-blue-600 to-cyan-400 bg-clip-text text-transparent mb-3"
+                        // Adaptive Typography: Smaller font on mobile (text-3xl), larger on desktop (md:text-4xl)
+                        className="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-blue-600 to-cyan-400 bg-clip-text text-transparent mb-3"
                     >
                         Let’s Work Together
                     </motion.h2>
                     <motion.p
                         variants={fadeUp}
-                        className="text-gray-600 dark:text-gray-400 mb-10 text-base md:text-lg leading-relaxed max-w-2xl mx-auto"
+                        className="text-gray-600 dark:text-gray-400 mb-8 md:mb-10 text-base md:text-lg leading-relaxed max-w-2xl mx-auto px-2"
                     >
                         Great things happen when creativity meets collaboration — let’s turn your ideas into something extraordinary.
                     </motion.p>
@@ -63,10 +66,13 @@ export default function Contact() {
                     <motion.form
                         onSubmit={sendEmail}
                         variants={fadeUp}
-                        className="relative bg-white/80 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-sm hover:shadow-lg backdrop-blur-md p-8 flex flex-col gap-6 transition-all duration-300"
+                        // Responsive Layout: Adjusted internal padding (p-6 vs md:p-8) and gap for better spacing on small screens
+                        className="relative bg-white/80 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-sm hover:shadow-lg backdrop-blur-md p-6 md:p-8 flex flex-col gap-5 md:gap-6 transition-all duration-300"
                     >
+                        {/* Background gradient overlay */}
                         <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-cyan-400/5 to-transparent rounded-2xl pointer-events-none" />
 
+                        {/* Name Input */}
                         <label className="flex flex-col text-left">
                             <span className="text-sm font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2">
                                 <FiUser /> Name
@@ -79,6 +85,7 @@ export default function Contact() {
                             />
                         </label>
 
+                        {/* Email Input */}
                         <label className="flex flex-col text-left">
                             <span className="text-sm font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2">
                                 <FiMail /> Email
@@ -92,6 +99,7 @@ export default function Contact() {
                             />
                         </label>
 
+                        {/* Message Input */}
                         <label className="flex flex-col text-left">
                             <span className="text-sm font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2">
                                 <FiMessageCircle /> Message
@@ -105,12 +113,14 @@ export default function Contact() {
                             />
                         </label>
 
+                        {/* Submit Button */}
                         <motion.button
                             type="submit"
                             disabled={loading}
-                            whileHover={{ scale: 1.03 }}
-                            whileTap={{ scale: 0.97 }}
-                            className="mt-2 flex items-center justify-center gap-2 bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 dark:bg-cyan-500 dark:hover:bg-cyan-600 shadow-md hover:shadow-lg transition-all duration-300"
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            // Responsive Button: Full width (w-full) on mobile for better UX, auto width on desktop
+                            className="mt-2 w-full md:w-auto self-center md:px-10 flex items-center justify-center gap-2 bg-blue-600 text-white py-3 rounded-full font-semibold hover:bg-blue-700 dark:bg-cyan-500 dark:hover:bg-cyan-600 shadow-md hover:shadow-lg transition-all duration-300"
                         >
                             {loading ? "Sending..." : <>Send Message <FiSend size={18} /></>}
                         </motion.button>
