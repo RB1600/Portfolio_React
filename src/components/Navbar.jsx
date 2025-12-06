@@ -1,4 +1,3 @@
-// src/components/Navbar.jsx
 import React, { useEffect, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
 import clsx from "clsx"
@@ -11,41 +10,40 @@ export default function Navbar() {
     const [scrolled, setScrolled] = useState(false)
     const location = useLocation()
 
-    // Toggle Dark Mode
     useEffect(() => {
         document.documentElement.classList.toggle("dark", dark)
         localStorage.setItem("theme", dark ? "dark" : "light")
     }, [dark])
 
-    // Detect Scroll for styling
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 30)
         window.addEventListener("scroll", onScroll)
         return () => window.removeEventListener("scroll", onScroll)
     }, [])
 
-    // Smooth Scroll & Navigation Handler
     const handleNavClick = (e, targetId) => {
         e.preventDefault()
-        setOpen(false) // Close mobile menu
+        setOpen(false)
 
-        if (location.pathname === "/") {
-            const el = document.querySelector(targetId)
-            if (el) {
-                const offset = 80 // Height of navbar
-                const bodyRect = document.body.getBoundingClientRect().top
-                const elementRect = el.getBoundingClientRect().top
-                const elementPosition = elementRect - bodyRect
-                const offsetPosition = elementPosition - offset
+        setTimeout(() => {
+            if (location.pathname === "/") {
+                const el = document.querySelector(targetId)
+                if (el) {
+                    const offset = 80
+                    const bodyRect = document.body.getBoundingClientRect().top
+                    const elementRect = el.getBoundingClientRect().top
+                    const elementPosition = elementRect - bodyRect
+                    const offsetPosition = elementPosition - offset
 
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: "smooth",
-                })
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth",
+                    })
+                }
+            } else {
+                window.location.href = `/${targetId}`
             }
-        } else {
-            window.location.href = `/${targetId}`
-        }
+        }, 300)
     }
 
     const navLinks = [
@@ -57,7 +55,6 @@ export default function Navbar() {
 
     return (
         <header
-            // Navbar Container: Fixed position, glass effect on scroll
             className={clsx(
                 "fixed top-0 w-full z-50 transition-all duration-300 border-b",
                 scrolled
@@ -66,15 +63,14 @@ export default function Navbar() {
             )}
         >
             <nav className="container mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
-                {/* Brand Logo */}
                 <Link
                     to="/"
+                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                     className="font-bold text-2xl bg-gradient-to-r from-blue-600 to-cyan-400 bg-clip-text text-transparent tracking-tight hover:scale-105 transition-transform"
                 >
                     &lt;Rohit /&gt;
                 </Link>
 
-                {/* Desktop Navigation */}
                 <div className="hidden md:flex items-center gap-8 text-gray-700 dark:text-gray-200 font-medium text-sm">
                     {navLinks.map((link) => (
                         <a
@@ -84,12 +80,10 @@ export default function Navbar() {
                             className="hover:text-blue-600 dark:hover:text-cyan-400 transition-colors relative group"
                         >
                             {link.name}
-                            {/* Hover Underline Animation */}
                             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 dark:bg-cyan-400 transition-all duration-300 group-hover:w-full" />
                         </a>
                     ))}
 
-                    {/* Desktop Theme Toggle */}
                     <button
                         onClick={() => setDark(!dark)}
                         aria-label="Toggle Theme"
@@ -99,7 +93,6 @@ export default function Navbar() {
                     </button>
                 </div>
 
-                {/* Mobile Controls (Theme + Menu) */}
                 <div className="md:hidden flex items-center gap-4">
                     <button
                         onClick={() => setDark(!dark)}
@@ -118,7 +111,6 @@ export default function Navbar() {
                 </div>
             </nav>
 
-            {/* Mobile Dropdown Menu with Animation */}
             <AnimatePresence>
                 {open && (
                     <motion.div
@@ -133,7 +125,7 @@ export default function Navbar() {
                                     key={link.name}
                                     href={link.href}
                                     onClick={(e) => handleNavClick(e, link.href)}
-                                    className="py-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors hover:text-blue-600 dark:hover:text-cyan-400"
+                                    className="py-3 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors hover:text-blue-600 dark:hover:text-cyan-400"
                                 >
                                     {link.name}
                                 </a>

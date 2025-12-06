@@ -1,23 +1,14 @@
 
 import agroImg from '../assets/projects/Agro.png';
 import settribeImg from '../assets/projects/Settribe.png'; 
-import jmImg from '../assets/projects/JM.png';
+
 import portfolioImg from '../assets/projects/Portfolio.png';
 import chaloKhelne from '../assets/projects/chaloKhelne.png';
 
 export const projects = [
+    
     {
         id: 1,
-        title: "AgriHub - Equipment Rental Platform",
-        description:
-            "A full-stack MERN platform that connects farmers and equipment owners for easy, secure, and efficient farm equipment rentals.",
-        tags: ["Full-Stack", "React", "Node.js", "MongoDB", "Express"],
-        githubLink: "https://github.com/your-username/agrihub",
-        liveDemoLink: "https://agrihub.vercel.app",
-        image: agroImg, 
-    },
-    {
-        id: 2,
         title: "Field Inspection System",
         description:
             "A digital inspection management system to track, log, and verify on-site inspection data.",
@@ -27,7 +18,7 @@ export const projects = [
         image: settribeImg,
     },
     {
-        id: 3,
+        id: 2,
         title: "Chalo Khelne - Sports Advertisement.",
         description:
 "A targeted advertising portal allowing local businesses and sports brands to run campaigns on the Chalo Khelne platform. Includes a self-service dashboard for managing banner ads, sponsoring local tournaments, and tracking real-time engagement analytics.",        tags: [ "React", "Tailwind CSS", "Node.js", "UI/UX Design"],
@@ -37,7 +28,7 @@ export const projects = [
     },
    
     {
-        id: 4,
+        id: 3,
         title: "Portfolio Website",
         description:
             "A personal portfolio built with React, Tailwind CSS, and Framer Motion.",
@@ -47,14 +38,14 @@ export const projects = [
         image: portfolioImg,
     },
      {
-        id: 5,
-        title: "JM Tour and Travels",
+        id: 4,
+        title: "AgriHub - Equipment Rental Platform",
         description:
-            "A modern travel booking and management web app featuring dynamic tour listings.",
-        tags: ["Frontend", "React", "Firebase", "Tailwind CSS"],
-        githubLink: "https://github.com/RB1600/Field-Inspetion-System",
-        liveDemoLink: "https://jm-tour-travels.vercel.app",
-        image: jmImg,
-    },
+            "A full-stack MERN platform that connects farmers and equipment owners for easy, secure, and efficient farm equipment rentals.",
+        tags: ["Full-Stack", "React", "Node.js", "MongoDB", "Express"],
+        githubLink: "https://github.com/RB1600/Farming",
+        liveDemoLink: "https://agrihub.vercel.app",
+        image: agroImg, 
+    }
       
 ];
