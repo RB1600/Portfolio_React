@@ -15,7 +15,10 @@ items: [
     "React Router",
     "Web Performance Optimization",
     "Responsive Design",
-    "React Native"
+    "React Native",
+    "Redux Toolkit",
+    "Context API",
+    "Bootstrap"
 ]
 
     },
@@ -33,6 +36,9 @@ items: [
     "API Rate Limiting",
     "WebSockets / Socket.io",
     "Microservices Basics",
+    "MVC Architecture",
+    "MySQL",
+    "Python",
 ]
     },
     {
@@ -46,6 +52,13 @@ items: [
     "Netlify",
     "Figma",
     "Chrome DevTools",
+    "Postman",
+    "Vercel",
+    "Render",
+    "Claude",
+    "ChatGPT",
+    "GitHub Copilot",
+    "Cursor",
 ]
     }
 ]

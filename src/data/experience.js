@@ -1,28 +1,29 @@
 export const experience = [
     {
         id: 1,
-        role: "React Developer",
+        role: "Trainee React Developer",
         company: "Baranwal Consultancy & Services",
-        period: "Sept 2025 – Present",
+        period: "Sep 2025 – Present",
         location: "Pimpri, Pune",
         responsibilities: [
-            "Developed MERN-based admin dashboards and protected data flow modules.",
-            "Implemented JWT authentication and secure API integration.",
-            "Contributed to deployment, testing, and production bug fixes."
+            "Built and deployed full-stack web and mobile features across React.js, React Native, and the MERN stack, contributing from planning through production.",
+            "Engineered responsive dashboards and admin panels with JWT role-based authentication, REST APIs, and MongoDB schemas using Mongoose.",
+            "Integrated AI tools into the development workflow, accelerating delivery and improving code quality.",
+            "Recognized for strong performance and entrusted with a large-scale SaaS product, owning features end-to-end."
         ],
-        tech: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT", "React Native"]
+        tech: ["React.js", "React Native", "Node.js", "Express.js", "MongoDB", "JWT", "AI Tools"]
     },
     {
         id: 2,
         role: "Software Development Intern",
         company: "SETTribe LLP",
         period: "Apr 2025 – Jul 2025",
-        location: "Vadgaon Bud, Pune",
+        location: "Vadgaon Bk, Pune",
         responsibilities: [
-            "Built full-stack modules integrating secure REST APIs.",
-            "Created reusable React components improving frontend performance.",
-            "Resolved UI/UX issues and improved responsiveness."
+            "Developed core modules of a government project using React.js, PHP, and SQL, building secure REST APIs and end-to-end CRUD functionality.",
+            "Built reusable, responsive UI components with Tailwind CSS and Material UI, improving frontend consistency and development speed.",
+            "Worked in an Agile environment and performed module testing to ensure stable, maintainable deliverables."
         ],
-        tech: ["PHP", "HTML", "CSS", "JavaScript", "React.js", "Node.js", "MySQL"]
+        tech: ["React.js", "PHP", "SQL", "REST APIs", "Tailwind CSS", "Material UI"]
     }
 ]

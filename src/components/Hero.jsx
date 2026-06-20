@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { fadeUp, staggerChildren } from "../utils/motionVariants"
 import { FiGithub, FiLinkedin, FiMail, FiDownload } from "react-icons/fi"
 import Profile from '../assets/Profile.jpeg'
+import resumePdf from '../assets/Rohit Bansode resume.pdf'
 
 const roles = ["MERN Stack Developer", "Full-Stack Engineer", "UI Enthusiast"]
 
@@ -98,8 +99,10 @@ export default function Hero() {
                     variants={fadeUp}
                     className="text-gray-600 dark:text-gray-300 mb-8 max-w-xl md:max-w-2xl mx-auto text-base md:text-lg leading-relaxed px-2"
                 >
-                    I create high-performance web applications that blend clean code, intuitive
-                    design, and modern technologies — turning ideas into elegant digital products.
+                    React Developer with 1+ year of experience building responsive web and mobile
+                    applications using React.js, React Native, and the MERN stack. Skilled in reusable
+                    component architecture, JWT authentication, and RESTful API integration — a fast
+                    learner who delivers clean, scalable, user-focused products.
                 </motion.p>
 
                 {/* CTA Buttons */}
@@ -109,8 +112,8 @@ export default function Hero() {
                 >
                     
                     <a
-                        href="/Public/resume.pdf"
-                        download
+                        href={resumePdf}
+                        download="Rohit Bansode Resume.pdf"
                         className="flex items-center justify-center gap-2 border border-slate-300 dark:border-slate-600 px-6 py-3 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition text-slate-800 dark:text-slate-200 w-full sm:w-auto"
                     >
                         <FiDownload /> Resume

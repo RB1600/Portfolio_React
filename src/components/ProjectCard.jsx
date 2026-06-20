@@ -1,65 +1,62 @@
 import React from "react"
 import { motion } from "framer-motion"
+import { FiArrowRight } from "react-icons/fi"
 
 export default function ProjectCard({ title, description, tags, image }) {
+    // Whole card lifts on hover; no scale, to avoid compounding the image zoom
     return (
         <motion.div
-            // Animation: Slight lift on hover
-            whileHover={{ scale: 1.02, y: -5 }}
-            transition={{ type: "spring", stiffness: 250, damping: 20 }}
-            // Layout: Responsive container with glassmorphism effect
-            className="group relative flex flex-col overflow-hidden rounded-2xl bg-white/80 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-xl transition-all duration-500 backdrop-blur-sm w-full h-full"
+            whileHover={{ y: -6 }}
+            transition={{ type: "spring", stiffness: 300, damping: 25 }}
+            className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 shadow-sm transition-all duration-500 hover:shadow-2xl hover:border-blue-400/60 dark:hover:border-cyan-400/40 backdrop-blur-sm"
         >
-            {/* Project Image Section */}
+            {/* Image — 16:9 frame matched to the project images so nothing is cropped */}
             {image && (
-                // Responsive Height: Standard on mobile (h-48), Taller on desktop (md:h-56)
-                <div className="relative h-48 md:h-56 overflow-hidden">
+                <div className="relative aspect-video overflow-hidden bg-slate-100 dark:bg-slate-900">
                     <img
                         src={image}
                         alt={title}
-                        className="object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-110"
+                        loading="lazy"
+                        className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     />
-                    {/* Overlay Gradient: Visible on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    {/* Bottom gradient: subtle by default, deepens on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent to-transparent opacity-50 transition-opacity duration-500 group-hover:opacity-90" />
                 </div>
             )}
 
-            {/* Content Container */}
-            <div className="p-5 md:p-6 flex flex-col justify-between flex-1">
-                <div>
-                    {/* Title: Adaptive font size */}
-                    <h3 className="text-xl md:text-2xl font-bold text-blue-600 dark:text-cyan-400 mb-2 md:mb-3 tracking-tight group-hover:underline underline-offset-4">
-                        {title}
-                    </h3>
+            {/* Content */}
+            <div className="flex flex-1 flex-col p-5 md:p-6">
+                {/* Title */}
+                <h3 className="mb-2 text-lg md:text-xl font-bold tracking-tight text-slate-900 dark:text-white transition-colors duration-300 group-hover:text-blue-600 dark:group-hover:text-cyan-400">
+                    {title}
+                </h3>
 
-                    {/* Description: Limited to 3 lines for clean layout */}
-                    <p className="text-sm md:text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-4 md:mb-5 line-clamp-3">
-                        {description}
-                    </p>
+                {/* Description: capped at 3 lines for uniform card height */}
+                <p className="mb-5 text-sm md:text-[0.95rem] leading-relaxed text-slate-600 dark:text-slate-400 line-clamp-3">
+                    {description}
+                </p>
 
-                    {/* Tech Stack Tags */}
-                    <div className="flex flex-wrap gap-2">
+                {/* Footer pinned to the bottom so every card lines up */}
+                <div className="mt-auto">
+                    {/* Tech stack tags */}
+                    <div className="mb-4 flex flex-wrap gap-2">
                         {tags.map((tag, i) => (
                             <span
                                 key={i}
-                                className="px-2.5 py-1 text-xs md:text-sm rounded-full bg-slate-100 dark:bg-slate-700 text-gray-700 dark:text-gray-200 font-medium tracking-wide border border-slate-200 dark:border-slate-600"
+                                className="rounded-full border border-slate-200 dark:border-slate-600 bg-slate-100 dark:bg-slate-700/60 px-2.5 py-1 text-xs font-medium tracking-wide text-slate-700 dark:text-slate-300"
                             >
                                 {tag}
                             </span>
                         ))}
                     </div>
-                </div>
 
-                {/* Call to Action Button */}
-                <div className="mt-6">
-                    <div className="inline-block w-full text-center px-5 py-3 rounded-full bg-blue-600 text-white font-semibold text-sm md:text-base group-hover:bg-blue-700 dark:bg-cyan-500 dark:group-hover:bg-cyan-600 transition-all duration-300 shadow hover:shadow-lg cursor-pointer">
-                        View Details
+                    {/* Call to action (whole card is clickable; this is the affordance) */}
+                    <div className="flex items-center gap-1.5 border-t border-slate-100 dark:border-slate-700/60 pt-4 text-sm font-semibold text-blue-600 dark:text-cyan-400">
+                        <span>View Details</span>
+                        <FiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
                     </div>
                 </div>
             </div>
-
-            {/* Decorative Border Glow on Hover */}
-            <motion.div className="absolute inset-0 border-2 border-transparent group-hover:border-blue-500/40 dark:group-hover:border-cyan-400/40 rounded-2xl transition-all duration-300 pointer-events-none" />
         </motion.div>
     )
 }
